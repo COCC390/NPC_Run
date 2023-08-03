@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QRunGameController : MonoBehaviour
+public class RunGameController : MonoBehaviour
 {
     [Header("GameRule")]
     [SerializeField] private GameObject _startObject;

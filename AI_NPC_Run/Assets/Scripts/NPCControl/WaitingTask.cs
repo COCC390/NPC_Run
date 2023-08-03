@@ -5,16 +5,16 @@ using QRun.BehaviorTree;
 
 public class WaitingTask : Node
 {
-    private QRunGameController _qRunGameController;
+    private RunGameController _runGameController;
 
-    public WaitingTask(QRunGameController qRunGameController)
+    public WaitingTask(RunGameController runGameController)
     {
-        _qRunGameController = qRunGameController;
+        _runGameController = runGameController;
     }
 
     public override NodeState Evaluate()
     {
-        if(!_qRunGameController.isStart)
+        if(!_runGameController.isStart)
         {
             Debug.Log("wait for start");
             state = NodeState.Success;

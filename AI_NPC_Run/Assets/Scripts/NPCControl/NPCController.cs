@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class NPCController : QRun.BehaviorTree.Tree
 {
-    [SerializeField] private QRunGameController _qrunGameController;
+    [SerializeField] private RunGameController _runGameController;
 
     [SerializeField] private NPCSensor _npcSensor;
 
@@ -28,7 +28,7 @@ public class NPCController : QRun.BehaviorTree.Tree
         Node root = new Selector(new List<Node>
         {
             new EndRunTask(this),
-            new WaitingTask(_qrunGameController),
+            new WaitingTask(_runGameController),
             new Selector(new List<Node>
             {
                 new RunTask(transform, _runSpeed, this, _npcSensor),
