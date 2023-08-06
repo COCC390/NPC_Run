@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSensor : MonoBehaviour // rename to npc sensor controller
+public class NPCSensorController : MonoBehaviour // rename to npc sensor controller
 {
     [SerializeField] private Transform _endPoint;
     [SerializeField] private List<Sensor> _sensors;
 
     [SerializeField] private float _timeToNextScan = 3f;
 
+    private bool _scanable = true;
     public bool walkable = true;
 
     [Header("Scan result")]
@@ -17,16 +18,20 @@ public class NPCSensor : MonoBehaviour // rename to npc sensor controller
     public ObstacleType stuckByObstacleType;
     public GameObject obstacle;
 
+    public Action EnableForSensorScan;
+
     #region Unity Default Method
     private void Start()
     {
         StartCoroutine(SensorScan()); // switch this to another function to easy modified the time when we need to start scan
+
+        EnableForSensorScan += EnableSensor;
     }
     #endregion
 
     private IEnumerator SensorScan()
     {
-        while(true)
+        while(_scanable)
         {
             foreach(Sensor sensor in _sensors)
             {
@@ -43,6 +48,7 @@ public class NPCSensor : MonoBehaviour // rename to npc sensor controller
                     if (stuckByObstacleType != ObstacleType.NotWalkableObstacle)
                     {
                         obstacle = sensor.GetObstacleObject();
+                        _scanable = false;
                         break;
                     }
                 }
@@ -52,4 +58,13 @@ public class NPCSensor : MonoBehaviour // rename to npc sensor controller
         }
     }
 
+    private void EnableSensor() {
+        _scanable = true;
+        StartCoroutine(SensorScan());
+    }
+
+    public void SensorStopWorking() {
+        EnableForSensorScan -= EnableSensor;
+        StopAllCoroutines();
+    }
 }

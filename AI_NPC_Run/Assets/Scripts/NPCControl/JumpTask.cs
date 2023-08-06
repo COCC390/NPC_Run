@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using QRun.BehaviorTree;
 
-public class JumpTask : Node {
+public class JumpTask : Node 
+{
+    private const float DISTANCETOJUMP = 40f;
+    
     private NPCController _npcController;
     private Transform _npcTransform;
     private Rigidbody _npcRigidbody;
-    private NPCSensor _npcSensorController;
+    private NPCSensorController _npcSensorController;
 
-    public JumpTask(NPCController npcController, Transform npcTransform, Rigidbody npcRigidBody, NPCSensor npcSensorController) {
+    public JumpTask(NPCController npcController, Transform npcTransform, Rigidbody npcRigidBody, NPCSensorController npcSensorController) {
         _npcController = npcController;
         _npcTransform = npcTransform;
         _npcRigidbody = npcRigidBody;
@@ -17,17 +20,20 @@ public class JumpTask : Node {
     }
 
     public override NodeState Evaluate() {
-        if (_npcSensorController.stuckByObstacleType == ObstacleType.JumpableObstacle) {
-            // Do Jump
-            Debug.Log("Do jump ");
-            _npcTransform.LookAt(_npcSensorController.obstacle.transform);
+        if (_npcSensorController.stuckByObstacleType == ObstacleType.JumpableObstacle)
+        {
+            if (Vector3.Distance(_npcSensorController.obstacle.transform.position, _npcTransform.position) >= DISTANCETOJUMP && !_npcController.isJumping)
+                _npcTransform.position += (_npcSensorController.obstacle.transform.position - _npcTransform.position).normalized * _npcController.RunSpeed * Time.deltaTime;
+            else if(!_npcController.isJumping)
+            {
+                DoJump();
+                _npcController.isJumping = true;
 
-            float jumpVelocity = Mathf.Sqrt(2 * 9.8f * _npcController.JumpHeight);
-            Vector3 jumpDirection = (_npcSensorController.obstacle.transform.position - _npcTransform.position).normalized;
+                state = NodeState.Success;
+                return state;
+            }
 
-            _npcRigidbody.velocity = new Vector3(jumpDirection.x * 20f, jumpVelocity, jumpDirection.z * 20f);
-
-            state = NodeState.Success;
+            state = NodeState.Running;
             return state;
         }
 
@@ -35,4 +41,16 @@ public class JumpTask : Node {
         return state;
     }
 
+
+    private void DoJump() 
+    {
+        Debug.Log("Do jump ");
+        float jumpVelocity = Mathf.Sqrt(2 * 9.8f * _npcController.JumpHeight);
+
+        Vector3 jumpDirection = (_npcSensorController.obstacle.transform.position - _npcTransform.position).normalized;
+
+        Vector3 forceVector = new Vector3(jumpDirection.x * _npcController.HorizontalVelocity, jumpVelocity, jumpDirection.z * _npcController.HorizontalVelocity);
+
+        _npcRigidbody.AddForce(forceVector, ForceMode.Impulse);
+    }
 }

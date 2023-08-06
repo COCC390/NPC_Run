@@ -302,8 +302,8 @@ Transform:
   m_GameObject: {fileID: 42783994}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -522.6, y: 10, z: 500}
-  m_LocalScale: {x: 50, y: 20, z: 2000}
+  m_LocalPosition: {x: -522.6, y: 25, z: 500}
+  m_LocalScale: {x: 50, y: 50, z: 2000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1628334239}
@@ -1412,9 +1412,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
+      propertyPath: _runSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
       propertyPath: _qrunGameController
       value: 
       objectReference: {fileID: 1149246725}
+    - target: {fileID: 4765435754015141169, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf8cb838b8069204bb749bc048317f1b, type: 2}
     - target: {fileID: 5267139138642152109, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
       propertyPath: m_Name
       value: EasyNPC  (1)
@@ -1608,10 +1616,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1526457775648523625, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1526457775648523625, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -400
       objectReference: {fileID: 0}
@@ -1651,41 +1655,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2589801335347484341, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: _runSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: _destination
-      value: 
-      objectReference: {fileID: 587495263}
-    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: _npcNavMeshAgent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: _checkPointsManager
-      value: 
-      objectReference: {fileID: 767954801}
-    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: _qrunGameController
+      propertyPath: _runGameController
       value: 
       objectReference: {fileID: 1149246725}
-    - target: {fileID: 4765435754015141169, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 552b13cfe8d15b3449191c6485f59766, type: 2}
     - target: {fileID: 5267139138642152109, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
       propertyPath: m_Name
       value: HardNPC  (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267139138642152109, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2116,8 +2092,8 @@ Transform:
   m_GameObject: {fileID: 1197199609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -308, y: 10, z: 538}
-  m_LocalScale: {x: 100, y: 20, z: 40}
+  m_LocalPosition: {x: -308, y: 25, z: 538}
+  m_LocalScale: {x: 100, y: 50, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1628334239}
@@ -2234,8 +2210,8 @@ Transform:
   m_GameObject: {fileID: 1234582327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -400, y: 45.7, z: 1450}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: -378.9, y: 45.7, z: 1450}
+  m_LocalScale: {x: 230, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1149246724}
@@ -2402,8 +2378,8 @@ Transform:
   m_GameObject: {fileID: 1384539510}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -233.4, y: 10, z: 500}
-  m_LocalScale: {x: 50, y: 20, z: 2000}
+  m_LocalPosition: {x: -233.4, y: 25, z: 500}
+  m_LocalScale: {x: 50, y: 50, z: 2000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1628334239}
@@ -3604,7 +3580,7 @@ GameObject:
   - component: {fileID: 1991514070}
   m_Layer: 6
   m_Name: Jumpable Obstacle
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 2
   m_StaticEditorFlags: 8
@@ -3723,7 +3699,7 @@ GameObject:
   - component: {fileID: 2026614880}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8

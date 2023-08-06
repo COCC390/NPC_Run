@@ -21,7 +21,6 @@ public class WaitingTask : Node
             return state;
         }
 
-        //Debug.Log("runnnnnnn...");
         state = NodeState.Failure;
         return state;
     }

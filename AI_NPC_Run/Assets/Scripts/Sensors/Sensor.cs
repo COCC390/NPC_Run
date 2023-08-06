@@ -5,7 +5,7 @@ using System;
 public class Sensor : MonoBehaviour
 {
     [Header("Sensor Management")]
-    [SerializeField] private NPCSensor _npcSensorManage;
+    [SerializeField] private NPCSensorController _npcSensorManage;
 
     [Header("Raycast For Sensor")]
     [SerializeField] private Color _sensorRayColor = Color.green;

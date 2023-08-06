@@ -7,24 +7,19 @@ using UnityEngine.AI;
 public class RunTask : Node
 {
     private Transform _npcTransform;
-    private float _runSpeed;
 
-    // for stop running state
     private NPCController _npcController;
-    private NPCSensor _sensor;
+    private NPCSensorController _sensor;
 
-    public RunTask(Transform npcTransform, float runSpeed, NPCController npcController, NPCSensor sensor)
+    public RunTask(Transform npcTransform, NPCController npcController, NPCSensorController sensor)
     {
         _npcTransform = npcTransform;
-        _runSpeed = runSpeed;
         _npcController = npcController;
         _sensor = sensor;
     }
 
     public override NodeState Evaluate()
     {
-        Debug.Log("run task");
-        //_npcTransform.Translate(Vector3.forward * _runSpeed * Time.deltaTime);
         if(_npcController.isOnGoal)
         {
             state = NodeState.Success;
@@ -37,10 +32,10 @@ public class RunTask : Node
             state = NodeState.Failure;
             return state;
         }
+        Debug.Log("run task");
 
         // write function for make character run follow the ray direction
-        Debug.Log("run task");
-        _npcTransform.position += _sensor.sensorDirection * _runSpeed * Time.deltaTime;
+        _npcTransform.position += _sensor.sensorDirection * _npcController.RunSpeed * Time.deltaTime;
 
         state = NodeState.Running;
         return state;

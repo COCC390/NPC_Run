@@ -7,18 +7,21 @@ public class NPCController : QRun.BehaviorTree.Tree
 {
     [SerializeField] private RunGameController _runGameController;
 
-    [SerializeField] private NPCSensor _npcSensor;
+    [SerializeField] private NPCSensorController _npcSensor;
 
     [Header("For Run")]
     [SerializeField] private float _runSpeed = 1f;
     [SerializeField] private float _boostSpeed = 10f;
 
+    public float RunSpeed { get => _runSpeed; set => _runSpeed = value; }
+
     [Header("For Jump")]
     [SerializeField] private float _jumpHeight = 10f;
-    [SerializeField] private float _jumpAngle = 60f;
+    [SerializeField] private float _horizontalVelocity = 10f;
+    public bool isJumping = false;
 
-    public float JumpHeight { get => _jumpHeight; set => _jumpHeight = value; }
-    public float JumpAngle { get => _jumpAngle; set => _jumpAngle = value; }
+    public float JumpHeight { get => _jumpHeight; }
+    public float HorizontalVelocity { get => _horizontalVelocity; }
 
     [Header("For End Run")]
     public bool isOnGoal = false;
@@ -31,7 +34,7 @@ public class NPCController : QRun.BehaviorTree.Tree
             new WaitingTask(_runGameController),
             new Selector(new List<Node>
             {
-                new RunTask(transform, _runSpeed, this, _npcSensor),
+                new RunTask(transform, this, _npcSensor),
                 new JumpTask(this, transform, this.GetComponent<Rigidbody>(), _npcSensor),
             })
         });
@@ -46,10 +49,18 @@ public class NPCController : QRun.BehaviorTree.Tree
         {
             case "Stop":
                 isOnGoal = true;
+                _npcSensor.SensorStopWorking();
                 break;
-            //case "Jump":
-            //    onJumpTrigger = true;
-            //    break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        switch (collision.collider.tag) 
+        {
+            case "Ground":
+                isJumping = false;
+                _npcSensor.EnableForSensorScan?.Invoke();
+                break;
         }
     }
 }
