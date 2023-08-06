@@ -1656,6 +1656,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
+      propertyPath: _jumpHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838836436609496276, guid: c387061d71c4b8c4aa5b14393cf647b1, type: 3}
       propertyPath: _runGameController
       value: 
       objectReference: {fileID: 1149246725}
@@ -2623,7 +2627,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547092804}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3580,7 +3584,7 @@ GameObject:
   - component: {fileID: 1991514070}
   m_Layer: 6
   m_Name: Jumpable Obstacle
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 2
   m_StaticEditorFlags: 8
