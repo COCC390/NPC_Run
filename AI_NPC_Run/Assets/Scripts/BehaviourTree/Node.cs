@@ -15,10 +15,8 @@ namespace QRun.BehaviorTree
 
         public Node parent;
 
-        //protected Node child = new Node();
         protected List<Node> children = new List<Node>();
         private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
-
 
         public Node() 
         {
